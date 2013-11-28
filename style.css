@@ -1,0 +1,71 @@
+/* reset */
+
+html,
+body,
+h1,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/* common */
+
+body {
+    background: #f0f3ee;
+    color: #5d5c5d;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.25em;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* layout */
+
+.layout {
+    width: 940px;
+    margin: 0 auto;
+}
+
+/* header */
+.top-container {
+    width: 100%;
+    background-color: #61c9a4;
+    color: #ffffff;
+}
+
+.top-header {
+    position: relative;
+}
+
+.top-container h1 {
+    font-weight: normal;
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+.top-container .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.2em;
+    line-height: 2.5em;
+}
+
+.top-container .menu a {
+    color: #f0f3ee;
+    margin-left: 0.315em;
+}
+
+/* pages */
+.page {
+    padding-top: 2em;
+    text-align: justify;
+}
+
+.page ul {
+    margin-left: 2em;
+}
