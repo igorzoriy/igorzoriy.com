@@ -67,7 +67,7 @@ a {
 /* pages */
 .page {
     min-height: 100em;
-    padding-top: 4em;
+    padding: 4em 0 25em;
     text-align: justify;
 }
 
