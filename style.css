@@ -61,7 +61,12 @@ a {
 
 .top-container .menu a {
     color: #f0f3ee;
-    margin-left: 0.315em;
+    padding: 0.1em 0.3em;
+}
+
+.top-container .menu .active {
+    background: #1a1a1a;
+    border-radius: 5px;
 }
 
 /* pages */
