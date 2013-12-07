@@ -1,5 +1,8 @@
 ;(function(global) {
     "use strict";
+    var menuClass = 'menu',
+        activeMenuItemClass = 'active',
+        pageClass = 'page';
 
     function getCurrentPage(pagesClass) {
         var pages = global.document.getElementsByClassName(pagesClass);
@@ -29,9 +32,6 @@
     }
 
     function setActiveMenuElement() {
-        var menuClass = 'menu',
-            activeMenuItemClass = 'active',
-            pageClass = 'page';
         renderMenu(menuClass, activeMenuItemClass, getCurrentPage(pageClass));
     }
 
