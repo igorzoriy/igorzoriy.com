@@ -1,16 +1,76 @@
 ;(function(global) {
     "use strict";
+    // polyfills
+    if (typeof document.getElementsByClassName != 'function') {
+        HTMLDocument.prototype.getElementsByClassName = function (className) {
+            if (!className) {
+                return [];
+            }
+            var elements = this.getElementsByTagName('*');
+            var list = [];
+            var expr = new RegExp('(^|\\b)' + className + '(\\b|$)');
+            for (var i = 0; i < elements.length; i++)
+                if (expr.test(elements[i].className)) {
+                    list.push(elements[i]);
+                }
+            return list;
+        };
+    }
+
+    function addClass(element, className) {
+        var i, classList;
+        if (element.classList) {
+            element.classList.add(className);
+        } else {
+            classList = element.className ? element.className.split(' ') : [];
+            for (i = 0; i < classList.length; i++) {
+                if (classList[i] === className) {
+                    return;
+                }
+            }
+            classList.push(className);
+            element.className = classList.join(' ');
+        }
+    }
+
+    function removeClass(element, className) {
+        var i,
+            classList;
+        if (element.classList) {
+            element.classList.remove(className);
+        } else {
+            classList = element.className.split(' ');
+            for (i = 0; i < classList.length; i++) {
+                if (classList[i] === className) {
+                    delete classList[i];
+                }
+            }
+            element.className = classList.join(' ');
+        }
+    }
+
+    function addEventListener(element, event, callback) {
+        if (element.addEventListener) {
+            element.addEventListener(event, callback);
+        } else {
+            element.attachEvent('on' + event, callback);
+        }
+    }
+
+    // main script
     var menuClass = 'menu',
         activeMenuItemClass = 'active',
         pageClass = 'page';
 
     function getCurrentPage(pagesClass) {
-        var pages = global.document.getElementsByClassName(pagesClass);
+        var i,
+            pages = global.document.getElementsByClassName(pagesClass),
+            currentScroll = global.scrollY || global.document.documentElement.scrollTop || global.document.body.scrollTop;
         if(!pages.length) {
             return '';
         }
-        for (var i = pages.length - 1; i >= 0 ; i--) {
-            if (pages[i].offsetTop <= global.document.body.scrollTop) {
+        for (i = pages.length - 1; i >= 0 ; i--) {
+            if (pages[i].offsetTop <= currentScroll) {
                 return pages[i].id;
             }
         }
@@ -24,9 +84,9 @@
         for (i = 0; i < menuItems.length; i++) {
             item = menuItems[i];
             if (activePageName === item.hash.substr(1)) {
-                item.classList.add(activeMenuItemClass);
+                addClass(item, activeMenuItemClass);
             } else {
-                item.classList.remove(activeMenuItemClass);
+                removeClass(item, activeMenuItemClass);
             }
         }
     }
@@ -36,5 +96,5 @@
     }
 
     setActiveMenuElement();
-    global.document.addEventListener('scroll', setActiveMenuElement);
+    addEventListener(global, 'scroll', setActiveMenuElement);
 })(window);
