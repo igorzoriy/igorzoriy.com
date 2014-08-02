@@ -9,31 +9,35 @@
 </head>
 
 <body>
-<header class="top-container">
-    <div class="top-header layout">
-        <h1>Igor Zoriy: Web Developer</h1>
+<header class="navigation">
+    <div class="navigation__inner">
+        <h1 class="navigation__header">
+            Igor Zoriy: Web Developer
+        </h1>
 
-        <div class="menu">
-            <a href="#about">About me</a>
-            <a href="#projects" class="one two free">Projects</a>
-            <a href="#experiments">Experiments</a>
-            <a href="#contacts">Contacts and Profiles</a>
+        <div class="navigation__menu">
+            <a class="navigation__menu-link active" href="#about">About me</a>
+            <a class="navigation__menu-link" href="#projects">Projects</a>
+            <a class="navigation__menu-link" href="#experiments">Experiments</a>
+            <a class="navigation__menu-link" href="#contacts">Contacts and Profiles</a>
         </div>
     </div>
 </header>
 
-<div class="layout page" id="about">
-    <h2>About me</h2>
+<div class="page" id="about">
+    <h2 class="page__header">
+        About me
+    </h2>
     Hello. My name is Igor Zoriy. I'm a web-developer.
     I'm skilled in server-side development:
-    <ul>
+    <ul class="list">
         <li>PHP - 5 years</li>
         <li>Symfony and Doctrine - 3 years</li>
         <li>NodeJS - 3 months</li>
     </ul>
     <br>
     Also I'm skilled in client-side development:
-    <ul>
+    <ul class="list">
         <li>JavaScript - 2 years</li>
         <li>BackboneJS - 1.5 years</li>
         <li>HTML and CSS - 1 year</li>
@@ -49,88 +53,96 @@
     </p>
 </div>
 
-<div class="layout page" id="projects">
-    <h2>Projects</h2>
+<div class="page" id="projects">
+    <h2 class="page__header">
+        Projects
+    </h2>
 
-    <div class="item-container">
-        <img src="img/nextlove.jpg" title="Nextlove">
-
-        <div class="item">
-            <h3>
-                <a href="http://www2.nextlove.com/">NextLOVE</a>
+    <div class="project">
+        <img class="project__image" src="img/nextlove.jpg" title="Nextlove">
+        <div class="project__info">
+            <h3 class="project__header">
+                <a class="project__link" href="http://www2.nextlove.com/">
+                    NextLOVE
+                </a>
             </h3>
-
-            <div class="description">
-                <strong>Dating for divorced and single parents.</strong><br>
+            <div class="project__description">
+                <strong>Dating for divorced and single parents.</strong>
+                <br>
                 PHP, Symfony, Doctrine, PHPUnit, MySQL, Redis, JavaScript, jQuery, BackboneJS, LESS, Grunt.
             </div>
         </div>
     </div>
-    <div class="item-container">
-        <img src="img/direct.jpg" title="Direct Result">
 
-        <div class="item">
-            <h3>
-                <a href="http://direct-result.nl/">Direct Result</a>
+    <div class="project">
+        <img class="project__image" src="img/direct.jpg" title="Direct Result">
+        <div class="project__info">
+            <h3 class="project__header">
+                <a class="project__link" href="http://direct-result.nl/">
+                    Direct Result
+                </a>
             </h3>
-
-            <div class="description">
+            <div class="project__description">
                 <strong>The project attracting donors for more than 15 charitable organizations.</strong><br>
                 PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery.
             </div>
         </div>
     </div>
-    <div class="item-container">
-        <img src="img/yoxla.jpg" title="Yoxla">
 
-        <div class="item">
-            <h3>
-                <a href="http://www.yoxla.az/en">Yoxla</a>
+    <div class="project">
+        <img class="project__image" src="img/yoxla.jpg" title="Yoxla">
+        <div class="project__info">
+            <h3 class="project__header">
+                <a class="project__link" href="http://www.yoxla.az/en">
+                    Yoxla
+                </a>
             </h3>
-
-            <div class="description">
+            <div class="project__description">
                 <strong>Azerbaijan internet and TV providers' catalog.</strong><br>
                 PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery.
             </div>
         </div>
     </div>
-    <div class="item-container">
-        <img src="img/sociomania.jpg" title="Sociomania">
 
-        <div class="item">
-            <h3>
-                <a href="http://sociomania.ru/">Sociomania</a>
+    <div class="project">
+        <img class="project__image" src="img/sociomania.jpg" title="Sociomania">
+        <div class="project__info">
+            <h3 class="project__header">
+                <a class="project__link" href="http://sociomania.ru/">
+                    Sociomania
+                </a>
             </h3>
-
-            <div class="description">
+            <div class="project__description">
                 <strong>The project for promotion users' products in social networks.</strong><br>
                 PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery, Bootstrap.
             </div>
         </div>
     </div>
-    <div class="item-container">
-        <img src="img/mywayticket.jpg" title="My Way Ticket">
 
-        <div class="item">
-            <h3>
-                <a href="http://www.mywayticket.com/">My Way Ticket</a>
+    <div class="project">
+        <img class="project__image" src="img/mywayticket.jpg" title="My Way Ticket">
+        <div class="project__info">
+            <h3 class="project__header">
+                <a class="project__link" href="http://www.mywayticket.com/">
+                    My Way Ticket
+                </a>
             </h3>
-
-            <div class="description">
+            <div class="project__description">
                 <strong>The system for buying and selling tickets for any event.</strong><br>
                 PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery.
             </div>
         </div>
     </div>
-    <div class="item-container">
-        <img src="img/xregistar.jpg" title="X-Registar">
 
-        <div class="item">
-            <h3>
-                <a href="http://x-registar.ru/">X-Registar</a>
+    <div class="project">
+        <img class="project__image" src="img/xregistar.jpg" title="X-Registar">
+        <div class="project__info">
+            <h3 class="project__header">
+                <a class="project__link" href="http://x-registar.ru/">
+                    X-Registar
+                </a>
             </h3>
-
-            <div class="description">
+            <div class="project__description">
                 <strong>The project serving for prevention of HIV and another sexually transmitted disease
                     extension.</strong><br>
                 PHP, Zend Framework, MySQL, JavaScript.
@@ -139,23 +151,25 @@
     </div>
 </div>
 
-<div class="layout page" id="experiments">
-    <h2>My experiments with new technologies</h2>
-    <ul>
+<div class="page" id="experiments">
+    <h2 class="page__header">
+        My experiments with new technologies
+    </h2>
+    <ul class="list">
         <li>
-            <a href="http://igorzoriy.github.io/sieve-of-eratosthenes-canvas/">
+            <a class="list__link" href="http://igorzoriy.github.io/sieve-of-eratosthenes-canvas/">
                 Sieve of Erathosthenes on HTML 5 Canvas
             </a>
             &nbsp;-&nbsp; Try to using Canvas
         </li>
         <li>
-            <a href="http://igorzoriy.github.io/snake-canvas/">
+            <a class="list__link" href="http://igorzoriy.github.io/snake-canvas/">
                 Snake on HTML 5 Canvas
             </a>
             &nbsp;-&nbsp; Try to using QUnit and RequestAnimationFrame API, try to code small and simple game on Pure JS
         </li>
         <li>
-            <a href="https://github.com/igorzoriy/grunt-backup">
+            <a class="list__link" href="https://github.com/igorzoriy/grunt-backup">
                 Grunt backup
             </a>
             &nbsp;-&nbsp; Try to write grunt plugin, try to use Nodeunit
@@ -163,26 +177,57 @@
     </ul>
 </div>
 
-<div class="layout page" id="contacts">
-    <h2>My contacts and links on profiles</h2>
-    Contacts:
-    <ul>
-        <li><a href="mailto:work@igorzoriy.com">E-mail</a></li>
-        <li><a href="skype:igor.zoriy?add">Skype</a></li>
+<div class="page" id="contacts">
+    <h2 class="page__header">
+        My contacts and links on profiles
+    </h2>
+
+    <h3 class="list__header">
+        Contacts:
+    </h3>
+    <ul class="list">
+        <li>
+            <a class="list__link" href="mailto:work@igorzoriy.com">E-mail</a>
+        </li>
+        <li>
+            <a class="list__link" href="skype:igor.zoriy?add">Skype</a>
+        </li>
     </ul>
-    Job:
-    <ul>
-        <li><a href="https://github.com/igorzoriy">GitHub</a></li>
-        <li><a href="http://www.linkedin.com/in/igorzoriy">LinkedIn</a></li>
-        <li><a href="http://igorzoriy.moikrug.ru/">MoiKrug</a></li>
-        <li><a href="http://brainstorage.me/IgorZoriy">BrainStorage</a></li>
+
+    <h3 class="list__header">
+        Job:
+    </h3>
+    <ul class="list">
+        <li>
+            <a class="list__link" href="https://github.com/igorzoriy">GitHub</a>
+        </li>
+        <li>
+            <a class="list__link" href="http://www.linkedin.com/in/igorzoriy">LinkedIn</a>
+        </li>
+        <li>
+            <a class="list__link" href="http://igorzoriy.moikrug.ru/">MoiKrug</a>
+        </li>
+        <li>
+            <a class="list__link" href="http://brainstorage.me/IgorZoriy">BrainStorage</a>
+        </li>
     </ul>
-    Other:
-    <ul>
-        <li><a href="https://twitter.com/#!/igor_zoriy">Twitter</a></li>
-        <li><a href="http://habrahabr.ru/users/nightstalker/">HabraHabr</a></li>
-        <li><a href="https://www.facebook.com/igor.zoriy">FaceBook</a></li>
-        <li><a href="http://htmlacademy.ru/public_profiles/id1564">HTML Academy</a></li>
+
+    <h3 class="list__header">
+        Other:
+    </h3>
+    <ul class="list">
+        <li>
+            <a class="list__link" href="https://twitter.com/#!/igor_zoriy">Twitter</a>
+        </li>
+        <li>
+            <a class="list__link" href="http://habrahabr.ru/users/nightstalker/">HabraHabr</a>
+        </li>
+        <li>
+            <a class="list__link" href="https://www.facebook.com/igor.zoriy">FaceBook</a>
+        </li>
+        <li>
+            <a class="list__link" href="http://htmlacademy.ru/public_profiles/id1564">HTML Academy</a>
+        </li>
     </ul>
 </div>
 

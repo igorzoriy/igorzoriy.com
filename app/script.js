@@ -58,7 +58,7 @@
     }
 
     // main script
-    var menuClass = 'menu',
+    var menuClass = 'navigation__menu',
         activeMenuItemClass = 'active',
         pageClass = 'page';
 
