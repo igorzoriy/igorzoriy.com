@@ -1,37 +1,4 @@
-/* reset */
-
-html,
-body,
-h1,
-h2,
-ul,
-li {
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    display: block;
-    margin: 0;
-    padding: 0;
-}
-
-/* common */
-
-body {
-    background: #f0f3ee;
-    color: #5d5c5d;
-    font-family: 'Open Sans', Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.25em;
-}
-
-a {
-    text-decoration: none;
-}
-
 /* layout */
-
 .layout {
     width: 940px;
     margin: 0 auto;

@@ -1,6 +1,7 @@
 "use strict";
 
 var appPath = 'app';
+var stylPath = appPath + '/styl/*.styl';
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -21,9 +22,15 @@ gulp.task('server', function () {
 
 gulp.task('stylus', function () {
     var stylus = require('gulp-stylus');
+    var rename = require('gulp-rename');
     gulp
-        .src(appPath + '/styles.styl')
+        .src(stylPath)
         .pipe(stylus())
+        .pipe(rename('styles.css'))
         .pipe(gulp.dest(appPath))
     ;
+});
+
+gulp.task('watch', function () {
+    gulp.watch(stylPath, ['stylus']);
 });
