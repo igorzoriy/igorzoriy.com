@@ -2,6 +2,7 @@
 
 var appPath = 'app';
 var stylPath = appPath + '/styl/**/*.styl';
+var tplPath = appPath + '/templates/**/*.jade';
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -31,6 +32,15 @@ gulp.task('stylus', function () {
     ;
 });
 
+gulp.task('templates', function () {
+    var jade = require('gulp-jade');
+    gulp.src(tplPath)
+      .pipe(jade())
+      .pipe(gulp.dest('output'))
+    ;
+});
+
 gulp.task('watch', function () {
     gulp.watch(stylPath, ['stylus']);
+    gulp.watch(tplPath, ['templates']);
 });
