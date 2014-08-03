@@ -9,6 +9,10 @@ html(lang="en")
 
     body
         include ./navigation.jade
-        block content
+
+        div.page
+            h2.page__header
+                block page-header
+            block page-content
+
         include ./metrika.jade
-        script(src="script.js")

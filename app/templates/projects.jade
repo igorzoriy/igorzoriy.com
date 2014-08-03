@@ -1,6 +1,9 @@
-div#projects.page
-    h2.page__header Projects
+extends ./partials/layout.jade
 
+block page-header
+    | Projects
+
+block page-content
     - for (var i = 0; i < projects.length; i++)
         - var project = projects[i]
         div.project
