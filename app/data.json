@@ -1,0 +1,46 @@
+{
+    "projects": [
+        {
+            "title": "NextLOVE",
+            "image": "images/nextlove.jpg",
+            "url": "http://nextlove.com",
+            "description": "Dating for divorced and single parents.",
+            "technologies": "PHP, Symfony, Doctrine, PHPUnit, MySQL, Redis, JavaScript, jQuery, BackboneJS, LESS, Grunt."
+        },
+        {
+            "title": "Direct Result",
+            "image": "images/direct.jpg",
+            "url": "http://direct-result.nl",
+            "description": "The project attracting donors for more than 15 charitable organizations.",
+            "technologies": "PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery."
+        },
+        {
+            "title": "Yoxla",
+            "image": "images/yoxla.jpg",
+            "url": "http://www.yoxla.az/en",
+            "description": "Azerbaijan internet and TV providers' catalog.",
+            "technologies": "PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery."
+        },
+        {
+            "title": "Sociomania",
+            "image": "images/sociomania.jpg",
+            "url": "http://sociomania.ru/",
+            "description": "The project for promotion users' products in social networks.",
+            "technologies": "PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery, Bootstrap."
+        },
+        {
+            "title": "My Way Ticket",
+            "image": "images/mywayticket.jpg",
+            "url": "http://www.mywayticket.com/",
+            "description": "The system for buying and selling tickets for any event.",
+            "technologies": "PHP, Symfony, Doctrine, MySQL, JavaScript, jQuery."
+        },
+        {
+            "title": "X-Registar",
+            "image": "images/xregistar.jpg",
+            "url": "http://x-registar.ru/",
+            "description": "The project serving for prevention of HIV and another sexually transmitted disease extension.",
+            "technologies": "PHP, Zend Framework, MySQL, JavaScript."
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+div#projects.page
+    h2.page__header Projects
+
+    - for (var i = 0; i < projects.length; i++)
+        - var project = projects[i]
+        div.project
+            img.project__image(title=project.title, src=project.image)
+            div.project__info
+                h3.project__header
+                    a.project__link(href=project.url)
+                        =project.title
+                div.project__description
+                    =project.description
+                div.project__technologies
+                    =project.technologies
