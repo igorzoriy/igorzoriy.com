@@ -3,6 +3,8 @@
 var appPath = 'app';
 var stylPath = appPath + '/styl/**/*.styl';
 var tplPath = appPath + '/templates/**/*.jade';
+var partTplPath = appPath + '/templates/partials/**/*.jade';
+var outputPath = 'output';
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -15,7 +17,7 @@ gulp.task('server', function () {
     var port = 8008;
 
     connect()
-        .use(serveStatic(appPath))
+        .use(serveStatic(outputPath))
         .listen(port)
     ;
     gutil.log(gutil.colors.yellow('Server started at http://localhost:' + port));
@@ -28,15 +30,17 @@ gulp.task('stylus', function () {
         .src(stylPath)
         .pipe(stylus())
         .pipe(concat('styles.css'))
-        .pipe(gulp.dest(appPath))
+        .pipe(gulp.dest(outputPath))
     ;
 });
 
 gulp.task('templates', function () {
     var jade = require('gulp-jade');
-    gulp.src(tplPath)
-      .pipe(jade())
-      .pipe(gulp.dest('output'))
+    gulp.src([tplPath, '!' + partTplPath])
+      .pipe(jade({
+            pretty: true
+        }))
+      .pipe(gulp.dest(outputPath))
     ;
 });
 
