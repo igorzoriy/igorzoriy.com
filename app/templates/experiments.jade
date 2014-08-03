@@ -1,0 +1,11 @@
+div#experiments.page
+    h2.page__header My experiments with new technologies
+
+    ul.list
+        - for (var i = 0; i < experiments.length; i++)
+            - var item = experiments[i]
+            li
+                a.list__link(href=item.url)
+                    =item.title
+                | &nbsp;-&nbsp;
+                =item.description

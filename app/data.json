@@ -42,5 +42,23 @@
             "description": "The project serving for prevention of HIV and another sexually transmitted disease extension.",
             "technologies": "PHP, Zend Framework, MySQL, JavaScript."
         }
+    ],
+
+    "experiments": [
+        {
+            "title": "Grunt backup",
+            "url": "https://github.com/igorzoriy/grunt-backup",
+            "description": "Small plugin for grunt to make backups (Node, NodeUnit)."
+        },
+        {
+            "title": "Snake on HTML 5 Canvas",
+            "url": "http://igorzoriy.github.io/snake-canvas/",
+            "description": "Small and simple game on Pure JS (Canvas, RequestAnimationFrame API, QUnit)."
+        },
+        {
+            "title": "Sieve of Erathosthenes",
+            "url": "http://igorzoriy.github.io/sieve-of-eratosthenes-canvas/",
+            "description": "Sieve of Erathosthenes on HTML 5 Canvas (Canvas)."
+        }
     ]
 }
