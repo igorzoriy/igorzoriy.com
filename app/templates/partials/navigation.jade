@@ -2,7 +2,7 @@ header.navigation
     div.navigation__inner
         h1.navigation__header Igor Zoriy: Web Developer
         div.navigation__menu
-            a.navigation__menu-link.active(href="index.html") About me
-            a.navigation__menu-link(href="projects.html") Projects
-            a.navigation__menu-link(href="experiments.html") Experiments
-            a.navigation__menu-link(href="contacts.html") Contacts and Profiles
+            a.navigation__menu-link(class="#{page == 'about' ? 'active' : ''}", href="index.html") About me
+            a.navigation__menu-link(class="#{page == 'projects' ? 'active' : ''}", href="projects.html") Projects
+            a.navigation__menu-link(class="#{page == 'experiments' ? 'active' : ''}", href="experiments.html") Experiments
+            a.navigation__menu-link(class="#{page == 'contacts' ? 'active' : ''}", href="contacts.html") Contacts and Profiles

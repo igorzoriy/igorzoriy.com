@@ -1,5 +1,6 @@
 doctype html
 html(lang="en")
+    block vars
     head
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=Edge,chrome=1")
@@ -12,7 +13,7 @@ html(lang="en")
 
         div.page
             h2.page__header
-                block page-header
+                =pageHeader
             block page-content
 
         include ./metrika.jade

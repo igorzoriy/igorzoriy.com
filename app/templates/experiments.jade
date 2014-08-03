@@ -1,7 +1,8 @@
 extends ./partials/layout.jade
 
-block page-header
-    | My experiments with new technologies
+block vars
+    - var page = 'experiments'
+    - var pageHeader = 'My experiments with new technologies'
 
 block page-content
     ul.list

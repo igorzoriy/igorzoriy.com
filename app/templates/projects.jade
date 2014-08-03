@@ -1,7 +1,8 @@
 extends ./partials/layout.jade
 
-block page-header
-    | Projects
+block vars
+    - var page = 'projects'
+    - var pageHeader = 'Projects'
 
 block page-content
     - for (var i = 0; i < projects.length; i++)

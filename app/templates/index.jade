@@ -1,7 +1,8 @@
 extends ./partials/layout.jade
 
-block page-header
-    | About me
+block vars
+    - var page = 'about'
+    - var pageHeader = 'About me'
 
 block page-content
     p.
