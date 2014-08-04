@@ -1,0 +1,33 @@
+extends ./partials/layout.jade
+
+block vars
+    - var page = 'resume'
+    - var pageHeader = 'Resume'
+
+block page-content
+    section.resume__section
+        h3.resume_header Abstract
+        table.resume__table
+            tbody
+                - for (var key in resume.abstract)
+                    tr.resume__table-row
+                        td.resume__table-name-col
+                            =key
+                            |:
+                        td.resume__table-value-col
+                            =resume.abstract[key]
+
+    section.resume__section
+        h3.resume_header Contacts
+        table.resume__table
+            tbody
+                - for (var i = 0; i < resume.contacts.length; i++)
+                    - var item = resume.contacts[i]
+                    tr.resume__table-row
+                        td.resume__table-name-col
+                            =item.name
+                            | :
+                        td.resume__table-value-col
+                            a.resume__link(href=item.url)
+                                =item.value
+

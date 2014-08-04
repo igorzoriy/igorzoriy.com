@@ -2,8 +2,8 @@
 
 var appPath = 'app';
 var stylPath = appPath + '/styl/**/*.styl';
-var tplPath = appPath + '/templates/**/*.jade';
-var partTplPath = appPath + '/templates/partials/**/*.jade';
+var tplPath = appPath + '/templates/*.jade';
+var partTplPath = appPath + '/templates/partials/*.jade';
 var dataPath = './' + appPath + '/data.json';
 var outputPath = 'output';
 
@@ -38,17 +38,15 @@ gulp.task('stylus', function () {
 gulp.task('templates', function () {
     var jade = require('gulp-jade');
     var data = require('gulp-data');
-    gulp.src([tplPath, '!' + partTplPath])
+    gulp.src(tplPath)
         .pipe(data(function () {
             return require(dataPath);
         }))
-        .pipe(jade({
-            pretty: true
-        }))
+        .pipe(jade())
         .pipe(gulp.dest(outputPath));
 });
 
 gulp.task('watch', function () {
     gulp.watch(stylPath, ['stylus']);
-    gulp.watch(tplPath, ['templates']);
+    gulp.watch([tplPath, partTplPath], ['templates']);
 });
