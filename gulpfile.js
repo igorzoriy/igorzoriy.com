@@ -35,7 +35,8 @@ gulp.task('clean', function () {
 
 gulp.task('images', function() {
     var imagemin = require('gulp-imagemin');
-    gulp.src(imagesPath)
+    return gulp
+        .src(imagesPath)
         .pipe(imagemin({
             optimizationLevel: 5
         }))
@@ -45,7 +46,7 @@ gulp.task('images', function() {
 gulp.task('styles', function () {
     var stylus = require('gulp-stylus');
     var concat = require('gulp-concat');
-    gulp
+    return gulp
         .src(stylPath)
         .pipe(stylus())
         .pipe(concat('styles.css'))
@@ -56,7 +57,8 @@ gulp.task('styles', function () {
 gulp.task('templates', function () {
     var jade = require('gulp-jade');
     var data = require('gulp-data');
-    gulp.src(tplPath)
+    return gulp
+        .src(tplPath)
         .pipe(data(function () {
             return require(dataPath);
         }))
@@ -67,8 +69,24 @@ gulp.task('templates', function () {
 gulp.task('watch', function () {
     gulp.watch(stylPath, ['styles']);
     gulp.watch([tplPath, partTplPath], ['templates']);
+    gulp.watch(imagesPath, ['images']);
 });
 
 gulp.task('build', ['clean', 'images', 'styles', 'templates']);
+
+gulp.task('deploy', ['build'], function () {
+    var fs = require('fs');
+    var s3 = require('gulp-s3');
+    var config = JSON.parse(fs.readFileSync('aws.json'));
+    var options = {
+        headers: {
+            'Cache-Control': 'max-age=315360000, no-transform, public'
+        }
+    };
+
+    return gulp
+        .src('output/**')
+        .pipe(s3(config, options));
+});
 
 gulp.task('default', ['build', 'server', 'watch']);
