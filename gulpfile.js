@@ -5,6 +5,7 @@ var stylPath = appPath + '/styl/**/*.styl';
 var tplPath = appPath + '/templates/*.jade';
 var partTplPath = appPath + '/templates/partials/*.jade';
 var dataPath = './' + appPath + '/data.json';
+var imagesPath = appPath + '/images/*';
 var outputPath = 'output';
 
 var gulp = require('gulp');
@@ -22,6 +23,23 @@ gulp.task('server', function () {
         .listen(port)
     ;
     gutil.log(gutil.colors.yellow('Server started at http://localhost:' + port));
+});
+
+gulp.task('clean', function () {
+    var del = require('del');
+    del.sync([
+            outputPath + '/**/*',
+            '!' + outputPath + '/.gitkeep'
+    ]);
+});
+
+gulp.task('images', function() {
+    var imagemin = require('gulp-imagemin');
+    gulp.src(imagesPath)
+        .pipe(imagemin({
+            optimizationLevel: 5
+        }))
+        .pipe(gulp.dest(outputPath + '/images'));
 });
 
 gulp.task('styles', function () {
@@ -51,6 +69,6 @@ gulp.task('watch', function () {
     gulp.watch([tplPath, partTplPath], ['templates']);
 });
 
-gulp.task('build', ['styles', 'templates']);
+gulp.task('build', ['clean', 'images', 'styles', 'templates']);
 
 gulp.task('default', ['build', 'server', 'watch']);
