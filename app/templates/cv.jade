@@ -1,0 +1,33 @@
+extends ./partials/layout.jade
+
+block vars
+    - var page = 'cv'
+    - var pageHeader = 'Curriculum Vitae'
+
+block page-content
+    section.cv__section
+        h3.cv_header Abstract
+        table.cv__table
+            tbody
+                - for (var key in cv.abstract)
+                    tr.cv__table-row
+                        td.cv__table-name-col
+                            =key
+                            |:
+                        td.cv__table-value-col
+                            =cv.abstract[key]
+
+    section.cv__section
+        h3.cv_header Contacts
+        table.cv__table
+            tbody
+                - for (var i = 0; i < cv.contacts.length; i++)
+                    - var item = cv.contacts[i]
+                    tr.cv__table-row
+                        td.cv__table-name-col
+                            =item.name
+                            | :
+                        td.cv__table-value-col
+                            a.cv__link(href=item.url)
+                                =item.value
+

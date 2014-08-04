@@ -60,5 +60,32 @@
             "url": "http://igorzoriy.github.io/sieve-of-eratosthenes-canvas/",
             "description": "Sieve of Erathosthenes on HTML 5 Canvas (Canvas)."
         }
-    ]
+    ],
+
+    "cv": {
+        "abstract": {
+            "Name": "Igor Zoriy",
+            "Date of Birth": "August 3, 1985",
+            "Citizenship": "Russia",
+            "Languages": "Russian, English",
+            "Status": "Available for hire"
+        },
+        "contacts": [
+            {
+                "name": "EMail",
+                "url": "mailto:work@igorzoriy.com",
+                "value": "work@igorzoriy.com"
+            },
+            {
+                "name": "Skype",
+                "url": "skype:igor.zoriy?add",
+                "value": "igor.zoriy"
+            },
+            {
+                "name": "GitHub",
+                "url": "https://github.com/igorzoriy",
+                "value": "https://github.com/igorzoriy"
+            }
+        ]
+    }
 }
