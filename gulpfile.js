@@ -24,7 +24,7 @@ gulp.task('server', function () {
     gutil.log(gutil.colors.yellow('Server started at http://localhost:' + port));
 });
 
-gulp.task('stylus', function () {
+gulp.task('styles', function () {
     var stylus = require('gulp-stylus');
     var concat = require('gulp-concat');
     gulp
@@ -47,6 +47,10 @@ gulp.task('templates', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(stylPath, ['stylus']);
+    gulp.watch(stylPath, ['styles']);
     gulp.watch([tplPath, partTplPath], ['templates']);
 });
+
+gulp.task('build', ['styles', 'templates']);
+
+gulp.task('default', ['build', 'server', 'watch']);
