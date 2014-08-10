@@ -9,20 +9,20 @@ block page-content
         h3.resume_header Abstract
         table.resume__table
             tbody
-                - for (var key in resume.abstract)
+                - for (var key in abstract)
                     tr.resume__table-row
                         td.resume__table-name-col
                             =key
                             |:
                         td.resume__table-value-col
-                            =resume.abstract[key]
+                            =abstract[key]
 
     section.resume__section
         h3.resume_header Contacts
         table.resume__table
             tbody
-                - for (var i = 0; i < resume.contacts.length; i++)
-                    - var item = resume.contacts[i]
+                - for (var i = 0; i < contacts.length; i++)
+                    - var item = contacts[i]
                     tr.resume__table-row
                         td.resume__table-name-col
                             =item.name
@@ -31,3 +31,20 @@ block page-content
                             a.resume__link(href=item.url)
                                 =item.value
 
+    section.resume__section
+        h3.resume_header Skills
+        table.resume__table
+            - var cols = 3
+            - for (var key in skills)
+                - var list = skills[key]
+                - var rows = Math.ceil(list.length / cols)
+                - for (var row = 1; row <= rows; row++)
+                    - var cls = row == rows ? 'resume__table-row' : ''
+                    tr(class =cls)
+                        if row == 1
+                            th.resume__table-header-col(rowspan =rows)
+                                =key
+                                | :
+                        - for (var col = 1; col <= cols; col++)
+                            td.resume__table-skill-col
+                                = list[row * col - 1]
