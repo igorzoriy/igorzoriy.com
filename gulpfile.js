@@ -10,6 +10,7 @@ var outputPath = 'output';
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var plumber = require('gulp-plumber');
 
 gulp.task('server', function () {
     var connect = require('connect');
@@ -48,6 +49,7 @@ gulp.task('styles', function () {
     var concat = require('gulp-concat');
     return gulp
         .src(stylPath)
+        .pipe(plumber())
         .pipe(stylus())
         .pipe(concat('styles.css'))
         .pipe(gulp.dest(outputPath))
@@ -59,6 +61,7 @@ gulp.task('templates', function () {
     var data = require('gulp-data');
     return gulp
         .src(tplPath)
+        .pipe(plumber())
         .pipe(data(function () {
             return require(dataPath);
         }))
