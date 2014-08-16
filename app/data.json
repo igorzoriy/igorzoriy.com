@@ -125,6 +125,11 @@
 
     "experiments": [
         {
+            "title": "Gulp HTML to PDF plugin",
+            "url": "https://github.com/igorzoriy/gulp-html2pdf",
+            "description": "Gulp plugin for export HTML to PDF (Node streams)."
+        },
+        {
             "title": "Grunt backup",
             "url": "https://github.com/igorzoriy/grunt-backup",
             "description": "Small plugin for grunt to make backups (Node, NodeUnit)."
