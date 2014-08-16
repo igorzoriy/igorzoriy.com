@@ -14,6 +14,8 @@ html(lang="en")
         div.page
             h2.page__header
                 =pageHeader
+                - if (typeof pdfLink != 'undefined')
+                    a.page__header-resume(href="resume.pdf") download pdf
             block page-content
 
         include ./metrika.jade

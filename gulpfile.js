@@ -68,7 +68,7 @@ gulp.task('templates', function () {
 
 gulp.task('pdf', function () {
     var html2pdf = require('gulp-html2pdf');
-    data.isSeparate = true;
+    data.isPDF = true;
 
     return gulp
         .src(tplPath + '/resume.jade')
