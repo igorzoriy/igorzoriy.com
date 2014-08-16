@@ -2,15 +2,16 @@
 
 var appPath = 'app';
 var stylPath = appPath + '/styl/**/*.styl';
-var tplPath = appPath + '/templates/*.jade';
-var partTplPath = appPath + '/templates/partials/*.jade';
-var dataPath = './' + appPath + '/data.json';
+var tplPath = appPath + '/templates';
 var imagesPath = appPath + '/images/*';
 var outputPath = 'output';
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
+var jade = require('gulp-jade');
+var gulpData = require('gulp-data');
+var data = require('./' + appPath + '/data.json');
 
 gulp.task('server', function () {
     var connect = require('connect');
@@ -57,25 +58,35 @@ gulp.task('styles', function () {
 });
 
 gulp.task('templates', function () {
-    var jade = require('gulp-jade');
-    var data = require('gulp-data');
     return gulp
-        .src(tplPath)
+        .src(tplPath + '/*.jade')
         .pipe(plumber())
-        .pipe(data(function () {
-            return require(dataPath);
-        }))
+        .pipe(gulpData(data))
         .pipe(jade())
+        .pipe(gulp.dest(outputPath));
+});
+
+gulp.task('pdf', function () {
+    var html2pdf = require('gulp-html2pdf');
+    data.isSeparate = true;
+
+    return gulp
+        .src(tplPath + '/resume.jade')
+        .pipe(plumber())
+        .pipe(gulpData(data))
+        .pipe(jade())
+        .pipe(html2pdf())
         .pipe(gulp.dest(outputPath));
 });
 
 gulp.task('watch', function () {
     gulp.watch(stylPath, ['styles']);
-    gulp.watch([tplPath, partTplPath], ['templates']);
+    gulp.watch([tplPath + '/**/*.jade'], ['templates']);
+    gulp.watch([tplPath + '/resume.jade'], ['pdf']);
     gulp.watch(imagesPath, ['images']);
 });
 
-gulp.task('build', ['clean', 'images', 'styles', 'templates']);
+gulp.task('build', ['clean', 'images', 'styles', 'templates', 'pdf']);
 
 gulp.task('deploy', ['build'], function () {
     var fs = require('fs');
