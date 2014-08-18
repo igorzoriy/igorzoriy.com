@@ -20,6 +20,7 @@
     "gulp-data": "^1.0.2",
     "gulp-html2pdf": "^0.1.0",
     "gulp-imagemin": "^0.6.2",
+    "gulp-inline-css": "^0.2.7",
     "gulp-jade": "^0.7.0",
     "gulp-plumber": "^0.6.4",
     "gulp-s3": "^0.3.0",

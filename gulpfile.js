@@ -62,11 +62,14 @@ gulp.task('templates', function () {
         .src(tplPath + '/*.jade')
         .pipe(plumber())
         .pipe(gulpData(data))
-        .pipe(jade())
+        .pipe(jade({
+            pretty: true
+        }))
         .pipe(gulp.dest(outputPath));
 });
 
 gulp.task('pdf', function () {
+    var inlineCss = require('gulp-inline-css');
     var html2pdf = require('gulp-html2pdf');
     data.isPDF = true;
 
@@ -74,7 +77,12 @@ gulp.task('pdf', function () {
         .src(tplPath + '/resume.jade')
         .pipe(plumber())
         .pipe(gulpData(data))
-        .pipe(jade())
+        .pipe(jade({
+            pretty: true
+        }))
+        .pipe(inlineCss({
+            url: 'file://' + process.cwd() +  '/output/resume.html'
+        }))
         .pipe(html2pdf())
         .pipe(gulp.dest(outputPath));
 });
