@@ -11,7 +11,7 @@ var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var jade = require('gulp-jade');
 var gulpData = require('gulp-data');
-var data = require('./' + appPath + '/data.json');
+var dataPath = './' + appPath + '/data.json';
 
 gulp.task('server', function () {
     var connect = require('connect');
@@ -58,6 +58,9 @@ gulp.task('styles', function () {
 });
 
 gulp.task('templates', function () {
+    var data = require(dataPath);
+    data.isPDF = false;
+
     return gulp
         .src(tplPath + '/*.jade')
         .pipe(plumber())
@@ -68,9 +71,10 @@ gulp.task('templates', function () {
         .pipe(gulp.dest(outputPath));
 });
 
-gulp.task('pdf', function () {
+gulp.task('pdf', ['styles'], function () {
     var inlineCss = require('gulp-inline-css');
     var html2pdf = require('gulp-html2pdf');
+    var data = require(dataPath);
     data.isPDF = true;
 
     return gulp
@@ -81,22 +85,24 @@ gulp.task('pdf', function () {
             pretty: true
         }))
         .pipe(inlineCss({
-            url: 'file://' + process.cwd() +  '/output/resume.html'
+            url: 'file://' + process.cwd() + '/' + outputPath + '/resume.html'
         }))
-        .pipe(html2pdf())
+        .pipe(html2pdf({
+            marginTop: 0,
+            marginBottom: 0
+        }))
         .pipe(gulp.dest(outputPath));
 });
 
 gulp.task('watch', function () {
     gulp.watch(stylPath, ['styles']);
     gulp.watch([tplPath + '/**/*.jade'], ['templates']);
-    gulp.watch([tplPath + '/resume.jade'], ['pdf']);
     gulp.watch(imagesPath, ['images']);
 });
 
-gulp.task('build', ['clean', 'images', 'styles', 'templates', 'pdf']);
+gulp.task('build', ['clean', 'images', 'styles', 'pdf', 'templates']);
 
-gulp.task('deploy', ['build'], function () {
+gulp.task('deploy', ['build', 'pdf'], function () {
     var fs = require('fs');
     var s3 = require('gulp-s3');
     var config = JSON.parse(fs.readFileSync('aws.json'));
