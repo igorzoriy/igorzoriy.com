@@ -1,13 +1,14 @@
 block vars
 
-include ./header.jade
+doctype html
+html(lang="en")
+    include ./header.jade
 
-body
-    include ./navigation.jade
-    div.page
-        block page-header
-            h2.page__header
-                =pageHeader
-        block page-content
-
-    include ./metrika.jade
+    body
+        include ./navigation.jade
+        div.page
+            block page-header
+                h2.page__header
+                    =pageHeader
+            block page-content
+        include ./metrika.jade
