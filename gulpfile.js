@@ -88,7 +88,9 @@ gulp.task('pdf', ['styles'], function () {
         }))
         .pipe(html2pdf({
             marginTop: 0,
-            marginBottom: 0
+            marginRight: 0,
+            marginBottom: 0,
+            marginLeft: 0
         }))
         .pipe(gulp.dest(outputPath));
 });
