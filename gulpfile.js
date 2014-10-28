@@ -8,7 +8,6 @@ var imagesPath = appPath + '/images/*';
 var outputPath = './output';
 
 var del = require('del');
-var fs = require('fs');
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -22,7 +21,7 @@ var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
 var inlineCss = require('gulp-inline-css');
 var html2pdf = require('gulp-html2pdf');
-var s3 = require('gulp-s3');
+var ghPages = require('gulp-gh-pages');
 
 var data = require(appPath + '/data.json');
 
@@ -73,6 +72,12 @@ gulp.task('templates', function () {
         .pipe(gulp.dest(outputPath));
 });
 
+gulp.task('cname', function () {
+    return gulp
+        .src(appPath + '/CNAME', {base: appPath})
+        .pipe(gulp.dest(outputPath));
+});
+
 gulp.task('pdf', ['styles'], function () {
     data.isPDF = true;
 
@@ -101,19 +106,12 @@ gulp.task('watch', function () {
     gulp.watch(imagesPath, ['images']);
 });
 
-gulp.task('build', ['clean', 'images', 'styles', 'pdf', 'templates']);
+gulp.task('build', ['clean', 'images', 'styles', 'pdf', 'templates', 'cname']);
 
 gulp.task('deploy', ['build', 'pdf'], function () {
-    var config = JSON.parse(fs.readFileSync('aws.json'));
-    var options = {
-        headers: {
-            'Cache-Control': 'max-age=315360000, no-transform, public'
-        }
-    };
-
     return gulp
-        .src('output/**')
-        .pipe(s3(config, options));
+        .src('output/**/*')
+        .pipe(ghPages());
 });
 
 gulp.task('default', ['build', 'server', 'watch']);
