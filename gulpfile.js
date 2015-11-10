@@ -2,9 +2,6 @@
 
 var port = 8008;
 var appPath = './app';
-var stylPath = appPath + '/styl/**/*.styl';
-var tplPath = appPath + '/templates';
-var imagesPath = appPath + '/images/*';
 var outputPath = './output';
 
 var del = require('del');
@@ -13,17 +10,10 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var jade = require('gulp-jade');
-var gdata = require('gulp-data');
 var connect = require('connect');
 var serveStatic = require('serve-static');
-var imagemin = require('gulp-imagemin');
 var stylus = require('gulp-stylus');
-var concat = require('gulp-concat');
-var inlineCss = require('gulp-inline-css');
-var html2pdf = require('gulp-html2pdf');
 var ghPages = require('gulp-gh-pages');
-
-var data = require(appPath + '/data.json');
 
 gulp.task('server', function () {
     connect()
@@ -40,32 +30,19 @@ gulp.task('clean', function () {
     ]);
 });
 
-gulp.task('images', function() {
-    return gulp
-        .src(imagesPath)
-        .pipe(imagemin({
-            optimizationLevel: 5
-        }))
-        .pipe(gulp.dest(outputPath + '/images'));
-});
-
 gulp.task('styles', function () {
     return gulp
-        .src(stylPath)
+        .src(appPath + '/styles.styl')
         .pipe(plumber())
         .pipe(stylus())
-        .pipe(concat('styles.css'))
         .pipe(gulp.dest(outputPath))
     ;
 });
 
-gulp.task('templates', function () {
-    data.isPDF = false;
-
+gulp.task('html', function () {
     return gulp
-        .src(tplPath + '/*.jade')
+        .src(appPath + '/index.jade')
         .pipe(plumber())
-        .pipe(gdata(data))
         .pipe(jade({
             pretty: true
         }))
@@ -78,37 +55,14 @@ gulp.task('cname', function () {
         .pipe(gulp.dest(outputPath));
 });
 
-gulp.task('pdf', ['styles'], function () {
-    data.isPDF = true;
-
-    return gulp
-        .src(tplPath + '/resume.jade')
-        .pipe(plumber())
-        .pipe(gdata(data))
-        .pipe(jade({
-            pretty: true
-        }))
-        .pipe(inlineCss({
-            url: 'file://' + process.cwd() + '/' + outputPath + '/resume.html'
-        }))
-        .pipe(html2pdf({
-            marginTop: 0,
-            marginRight: 0,
-            marginBottom: 0,
-            marginLeft: 0
-        }))
-        .pipe(gulp.dest(outputPath));
-});
-
 gulp.task('watch', function () {
-    gulp.watch(stylPath, ['styles']);
-    gulp.watch([tplPath + '/**/*.jade'], ['templates']);
-    gulp.watch(imagesPath, ['images']);
+    gulp.watch(appPath + '/styles.styl', ['styles']);
+    gulp.watch(appPath + '/index.jade', ['html']);
 });
 
-gulp.task('build', ['clean', 'images', 'styles', 'pdf', 'templates', 'cname']);
+gulp.task('build', ['clean', 'styles', 'html', 'cname']);
 
-gulp.task('deploy', ['build', 'pdf'], function () {
+gulp.task('deploy', ['build'], function () {
     return gulp
         .src('output/**/*')
         .pipe(ghPages());
