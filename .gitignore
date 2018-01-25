@@ -1,4 +1,3 @@
+.cache
 node_modules
-output/*
-!output/.gitkeep
-aws.json
+dist
