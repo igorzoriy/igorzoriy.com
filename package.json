@@ -21,9 +21,11 @@
   "devDependencies": {
     "gh-pages": "^1.1.0",
     "jsonresume-theme-spartan": "^0.2.1",
-    "parcel-bundler": "^1.5.0",
-    "parcel-plugin-pug": "^0.2.4",
+    "pug": "^2.0.3",
     "resume-cli": "^0.4.19",
     "stylus": "^0.54.5"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.11.0"
   }
 }
