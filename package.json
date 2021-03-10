@@ -13,9 +13,8 @@
   },
   "homepage": "http://igorzoriy.com",
   "scripts": {
-    "serve": "parcel serve --dist-dir public ./index.pug",
-    "build": "parcel build --dist-dir public --public-url ./ ./index.pug",
-    "deploy": "npm run build"
+    "serve": "parcel serve --dist-dir docs ./index.pug",
+    "build": "parcel build --dist-dir docs --public-url ./ ./index.pug"
   },
   "dependencies": {
     "parcel": "^2.0.0-beta.1",
