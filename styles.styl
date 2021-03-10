@@ -3,10 +3,21 @@ body
     color #5d5c5d
     font-family Helvetica, Arial, sans-serif
     font-size 16px
-    line-height 1.25em
+    line-height 1.25rem
+
+ @media screen and (max-width:  799px)
+    body
+        font-size 20px
+
+a
+    color #5056EC
+    text-decoration none
+
+a:hover
+    text-decoration underline
 
 .page
-    width 800px
+    max-width 800px
     margin 0 auto
     padding 4em 0
 
@@ -28,10 +39,6 @@ body
     font-size: 1.5em
     margin: 0.6em 0
 
-.resume a
-    color #5f69ee
-    text-decoration none
-
 .section-header
     font-size 1.25em
     margin 0.75em 0
@@ -39,7 +46,3 @@ body
 .list
     margin 1em 1em 2em
     line-height 1.5
-
-.list-link
-    color #5f69ee
-    text-decoration none

@@ -13,19 +13,17 @@
   },
   "homepage": "http://igorzoriy.com",
   "scripts": {
-    "resume": "resume export -t spartan resume.pdf",
-    "serve": "npm run resume && parcel ./index.pug",
-    "build": "npm run resume && parcel build --public-url ./ ./index.pug",
-    "deploy": "npm run build && cp CNAME dist/CNAME && gh-pages -d dist"
-  },
-  "devDependencies": {
-    "gh-pages": "^1.1.0",
-    "jsonresume-theme-spartan": "^0.2.1",
-    "pug": "^2.0.3",
-    "resume-cli": "^0.4.19",
-    "stylus": "^0.54.5"
+    "serve": "parcel serve --dist-dir public ./index.pug",
+    "build": "parcel build --dist-dir public --public-url ./ ./index.pug",
+    "deploy": "npm run build"
   },
   "dependencies": {
-    "parcel-bundler": "^1.11.0"
+    "parcel": "^2.0.0-beta.1",
+    "pug": "^3.0.2",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.0.0-nightly.621",
+    "@parcel/transformer-stylus": "^2.0.0-nightly.621"
   }
 }
